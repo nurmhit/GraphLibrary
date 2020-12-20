@@ -31,6 +31,7 @@ public:
 template <typename ...T, typename ...U>
 class CustomGraph<TypeList<T...>, TypeList<U...>>
 {
+protected:
   CustomList nodes;
   CustomList edges;
   std::vector <std::vector <int>> relations;
@@ -72,7 +73,7 @@ public:
   {
     return nodes.val_at<Node<typename TypeAt<place, v>::res>>(place).val;
   }
-  
+
 
   template <int i, typename Z, typename E, typename FuncRes = Z (*)(E)>
   auto NodeIteration(FuncRes f)
