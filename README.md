@@ -72,3 +72,23 @@ x.FullNodeIteration<2, int, int> (f);
 ```
 
 Граф изначально был заполнен 3мя вершинами 3, 7, 5.
+
+## Паттерн Компоновщик
+
+```cpp
+  CompositeGraph <TypeList<SuperHero, TypeList<CompositeGraph <TypeList<SuperHero, Nulltype>, TypeList<SuperHero, Nulltype> >, Nulltype>>, TypeList<SuperHero, Nulltype> > y;
+  y.add__vertex(SuperHero(10));
+  std::cout << y.get_strength() << std::endl;
+
+  CompositeGraph <TypeList<SuperVillian, Nulltype>, TypeList<SuperVillian, Nulltype> > z;
+  z.add__vertex(SuperVillian(10));
+
+  y.add__vertex(z);
+  std::cout << y.get_strength() << std::endl;
+```
+
+Как можно заметить, в данном случае подсчитается ответ для всех членов класса, даже, учитывая, что один из них граф.
+
+## Этап компиляции
+
+Схема графа строится на этапе компиляции!  
